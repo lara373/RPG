@@ -4,7 +4,7 @@ programa {
     cadeia inventario[5]={"#","#","#","#","#","#","#"}
     inteiro quantidade[5]={0,0,0,0,0,0,0}
     cadeia nome, item
-    inteiro escolhaCalabouco, escolhaDoisCalabouco, dica
+    inteiro escolhaCalabouco, escolhaDoisCalabouco, dica, escolhafinal
     logico achou=falso
     logico tochaAcesa = falso
 
@@ -20,7 +20,7 @@ programa {
     escreva("----------------------------------------------------------------------------\n")
     u.aguarde(8000)
     escreva("Sua aventura vai começar!\n")
-    u.aguarde(5000)
+    u.aguarde(3000)
     limpa()
      enquanto (verdadeiro) {
     escreva("-> Há um espelho na parede à sua direita do calabouço, uma estátua segurando uma tocha apagada no centro da sala, e um baú na esquerda da sala. No espelho há um círculo.\n")
@@ -74,6 +74,9 @@ programa {
                         tochaAcesa = verdadeiro
                         pare
                     }
+
+                  
+
                     senao se (item == "fósforo" e tochaAcesa) {
                         escreva("A tocha já está acesa e o espelho já foi revelado.\n")
                     }
@@ -90,6 +93,7 @@ programa {
                     escreva("A porta secreta no espelho está aberta.\n")
                 }
             }
+            
 
             senao {
                 escreva("Opção inválida. Tente novamente.\n")
@@ -136,13 +140,19 @@ programa {
         u.aguarde(4000)
         escreva("Narrador: Tomás luta contra os guardas, enquanto ",nome," vai roubar a coroa.\n")
         u.aguarde(4000)
-        escreva(nome," consegue pegar a coroa. Quando está voltando se depara com o Tomás sangrando no chão, " ,nome, " vai até ele com lágrimas, porém não da tempo de ajudar seu amigo pois todos os guardas estavam la, então invés disso, ",nome, " foge com a coroa antes que os guardas o peguem, deixando seu fiel amigo para trás. No ultimo suspiro de vida de Tomás, seu último pedido foi que ",nome," cuidasse da vila por todos.\n")
-        u.aguarde(50000)
-        escreva(nome," pega a chave dourada que tinha achado no final do corredor mais cedo, e abre a porta do castelo.\n")
-        u.aguarde(5000)
-        escreva("Parabens! Você conseguiu fugir do castelo com a coroa.\n")
-        u.aguarde(5000)
-        escreva("Jogo finalizado. O gosto da doce vitória... (ou não).\n")
+        escreva("Narrador: ",nome," consegue pegar a coroa. Quando está voltando se depara com o Tomás sangrando no chão, " ,nome, " vai até ele com lágrimas, e ",nome," tem uma escolha difícil a fazer: você deseja tentar salvar seu amigo mesmo que todos os guardas estejam ali prontos para te atacar, ou prefere fugir com a coroa e deixar Tomás para tras? Digite 1 para tentar salva-lo e 2 para fugir: \n")
+        leia(escolhafinal)
+        escolha (escolhafinal){
+          caso 1: 
+          escreva("Narrador: ",nome," vai bravamente salvar seu fiel amigo Tomás, porém os guardas são muitos e ",nome," infelizmente perde a batalha.\n")
+          u.aguarde(6000)
+          escreva("Derrota para os dois heróis, o coração falou mais alto, talvez fosse melhor deixar seu amigo para trás...")
+          pare
+          caso 2: 
+          escreva("Narrador: ",nome," é realista e percebe que não tem como vencer uma batalha contra todos os guardas do castelo, entao você foge com a coroa deixando Tomás para tras. Seu coração chora de dor, porém você sabe que é necessario, caso contrario tudo que vocês passaram seria em vão. Você pega a chave dourada que tinha achado no final do corredor mais cedo, e abre a porta do castelo.\n")
+          u.aguarde(8000)
+          escreva("Jogo finalizado. O gosto da doce vitória... (ou não).")
+        }
     }
     senao se (escolhaDoisCalabouco == 2) {
         escreva("Narrador: Vocês tomam a poção de invisibilidade e começam a atravessar o corredor despercebidos...\n")
